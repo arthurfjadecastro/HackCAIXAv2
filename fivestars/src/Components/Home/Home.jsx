@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Email, Facebook, Instagram, Twitter } from "@mui/icons-material";
 import {useNavigate } from "react-router-dom";
+import { Footer, Navbar } from "../Resources";
 
 function Home() {
   // State to open Questionnaire
@@ -30,16 +31,7 @@ function Home() {
 
   return (
     <>
-      <AppBar position="absolute" style={{ background: "linear-gradient(to right, #0900A9, #54BBAB)" }}>
-        <Toolbar style={{ minHeight: "65px !important" }}>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, display: "flex" }}>
-            <img src="/Images/negativo.png" alt="Slide 1" style={{ width: "128px" }} />
-          </Typography>
-          <Button onClick={handleLogin} size={"small"} variant="outlined" style={{ cursor: "pointer" }} color="inherit">
-            LOGIN
-          </Button>
-        </Toolbar>
-      </AppBar>
+      <Navbar handleLogin={handleLogin} login={true}/>
         {/* Header */}
         <Box sx={{ flexGrow: 1, mt: 2 }}>
           <Slider pauseOnHover={false} {...settings}>
@@ -133,38 +125,7 @@ function Home() {
             </div> */}
           </Slider>
           {/* Footer */}
-          <Box
-        sx={{
-          position: "fixed",
-          bottom: 0,
-          width: "100%",
-          // background: "linear-gradient(to right, #005CA9, #54BBAB)",
-          background:" linear-gradient(to right, #0900A9, #54BBAB)"
-        }}
-      >
-        <Box p={3} style={{ background: "linear-gradient(to right, #0900A9, #54BBAB)" }}>
-          <Box sx={{ display: "flex", justifyContent: "center", marginTop: "1rem" }}>
-            <a href="https://pt-br.facebook.com/caixa/" target="_blank" rel="noopener noreferrer">
-              <Facebook style={{ fontSize: "2rem", margin: "0.5rem", color: "white" }} />
-            </a>
-            <a href="https://twitter.com/i/flow/login?redirect_after_login=%2FCaixa" target="_blank" rel="noopener noreferrer">
-              <Twitter style={{ fontSize: "2rem", margin: "0.5rem", color: "white" }} />
-            </a>
-            <a href="https://www.instagram.com/caixa/" target="_blank" rel="noopener noreferrer">
-              <Instagram style={{ fontSize: "2rem", margin: "0.5rem", color: "white" }} />
-            </a>
-          </Box>
-          <Typography variant="body2" style={{ color: "orange", textAlign: "center", fontWeight: 800 }}>
-            CAIXA ECONÔMICA FEDERAL
-          </Typography>
-          <Typography variant="body2" style={{ color: "white", textAlign: "center" }}>
-            Entre em contato conosco:
-            <a href="mailto:seu-email@organizacao.com" style={{ marginLeft: "0.5rem", color: "white" }}>
-              <Email style={{ verticalAlign: "middle", color: "white" }} /> contato@caixa.gov.br
-            </a>
-          </Typography>
-        </Box>
-      </Box>
+          <Footer/>
       </Box>
     </>
   );
