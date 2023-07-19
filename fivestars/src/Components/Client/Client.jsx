@@ -17,7 +17,7 @@ function Client() {
 
     return (
       <>
-        <Navbar login={false}/>
+        <Navbar login={false} logout={true} />
         <Grid container style={{ height: "100vh", background: "linear-gradient(to right, #0900A9, #54BBAB)" }}>
       <Grid style={{display: "flex"}} item xs={6} >
         <ClientFlow handlePageChange={handlePageChange} currentPage={page}/>

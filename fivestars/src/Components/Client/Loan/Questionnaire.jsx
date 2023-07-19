@@ -11,9 +11,12 @@ function Questionnaire({ page, handlePageChange, titlePage,isContinueButtonEnabl
 
   return (
     <>
-      <Grid container  direction="column" justifyContent="space-between" alignItems="center" style={{height: "100%", margin: 0,padding: 0}}>
+      <Grid container spacing={2}  direction="column" justifyContent="space-between" alignItems="center" style={{height: "100%", margin: 0,padding: 0}}>
+      <Grid item>
+
       <Typography >{titlePage}</Typography>
-        <Grid item>
+      </Grid>
+        <Grid style={{marginBottom: 40, marginTop: 40}} item>
           <RenderIf predicate={page === 1}>
             <FirstPage state={state} dispatch={dispatch} />
           </RenderIf>
@@ -32,13 +35,12 @@ function Questionnaire({ page, handlePageChange, titlePage,isContinueButtonEnabl
             <Grid style={{display: "flex", justifyContent: "center"}} item>
             <DefaultButton handlePageChange={handlePageChange} isContinueButtonEnabled={isContinueButtonEnabled[page](state)} buttonTitle={"Continuar"} />
             </Grid>
-            <Grid style={{display: "flex", justifyContent: "center"}} item>
             <RenderIf predicate={page > 1 && page < 4}>
+            <Grid style={{display: "flex", justifyContent: "center"}} item>
                  <DefaultButton handlePageChange={handleBack} buttonTitle={"Voltar"} isContinueButtonEnabled={true} />
-            </RenderIf>  
             </Grid>
+            </RenderIf>  
         </Grid>
-        
       </Grid>
     </>
   );

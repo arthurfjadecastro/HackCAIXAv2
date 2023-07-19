@@ -76,12 +76,13 @@ function Home() {
                 </Grid>
               </Grid>
             </div>
-            {/* <div>
+            <div>
               <Grid
                 container
-                style={{ height: isMobile ? "50%" : "100%" }}
+                style={{ height: isMobile ? "50%" : "100vh" }}
                 justifyContent="center"
                 alignItems="center"
+                spacing={2}
               >
                 <Grid
                   item
@@ -92,34 +93,45 @@ function Home() {
                   <Typography
                     style={{ fontSize: isMobile ? 22 : 36 }}
                     className="classText"
-                    textAlign="center"
+                    textAlign = {isMobile ? "center" : "right"}
                     variant="body1"
                     component="div"
                   >
-                    Solicite seu crédito na CAIXA com{" "}
-                    <span className="orange-text"> facilidade e segurança</span>
-                    .
+                    
+                    Crédito adaptado às {" "} <br></br>
+                    <span className="orange-text"> suas necessidades </span> <br></br>
+                    na CAIXA.
                   </Typography>
                 </Grid>
                 <Grid
                   item
                   xs={12}
                   md={6}
-                  style={{ display: "flex", justifyContent: "center" }}
+                  style={{ display: "flex", justifyContent: isMobile ? "center" : "left", }}
                 >
-                  <img
-                    src="/Images/header.jpg"
-                    alt="Slide 2"
-                    style={{
-                      height: "auto",
-                      width: "100%",
-                      objectFit: "cover",
-                      maxWidth: "60%",
+                   <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: isMobile ? "center" : "left",
+                      alignItems: "center",
                     }}
-                  />
+                  >
+                    <img
+                      src="/Images/CAIXA+.svg"
+                      alt="Slide 2"
+                      style={{
+                        height: "auto",
+                        width: 360,
+                        // paddingTop: 64,
+                        objectFit: "contain",
+                        maxWidth: isMobile ? "30%" : "100%",
+ 
+                      }}
+                    />
+                  </Box>
                 </Grid>
               </Grid>
-            </div> */}
+            </div>
           </Slider>
           {/* Footer Component */}
           <Footer/>

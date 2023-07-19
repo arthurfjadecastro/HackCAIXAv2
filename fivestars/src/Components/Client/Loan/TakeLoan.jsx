@@ -179,7 +179,7 @@ function TakeLoan({ isOpen, setClose }) {
               <CloseIcon />
             </IconButton>
             <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-              Crédito Rápido - CAIXA
+              CAIXA ÁGIL
             </Typography>
           </Toolbar>
         </AppBar>
@@ -194,6 +194,7 @@ function TakeLoan({ isOpen, setClose }) {
             padding: 16, 
             justifyContent: "center",
             alignContent: "center",
+            background: 'linear-gradient(to right, #FFF, #D0E0E3)',
           }}
         >
           <Questionnaire

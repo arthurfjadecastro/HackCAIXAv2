@@ -11,8 +11,8 @@ const Monetary = ({ helperText, onBlur, value, onChange, type }) => {
       10
     );
 
-    if (numericValue < 200 || numericValue > 10000) {
-      setValue("Valor deve estar entre R$ 200,00 e R$ 10.000,00");
+    if (numericValue < 200 || numericValue > 100000) {
+      setValue("Valor deve estar entre R$ 200,00 e R$ 100.000,00");
     } else {
       setValue("");
     }
