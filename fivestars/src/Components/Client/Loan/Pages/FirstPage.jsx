@@ -12,7 +12,7 @@ const useStyles = makeStyles({
   checkboxContainer: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
+    alignItems: 'left',
     gap: '8px',
   },
   checkboxLabel: {
@@ -46,16 +46,15 @@ const useStyles = makeStyles({
   },
 });
 
-function FirstPage() {
+function FirstPage({ dispatch }) {
   const classes = useStyles();
-  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [selectedOption, setSelectedOption] = useState(null);
 
   const handleCheckboxChange = (option) => {
-    if (selectedOptions.includes(option)) {
-      setSelectedOptions(selectedOptions.filter((item) => item !== option));
-    } else {
-      setSelectedOptions([...selectedOptions, option]);
-    }
+    setSelectedOption(option);
+
+    // Dispatch the action with the selected option
+    dispatch({ type: 'creditOption', payload: option });
   };
 
   return (
@@ -64,24 +63,24 @@ function FirstPage() {
         <FormControlLabel
           control={
             <Checkbox
-              checked={selectedOptions.includes('Comprar imóvel')}
+              checked={selectedOption === 'Comprar imóvel'}
               onChange={() => handleCheckboxChange('Comprar imóvel')}
               name="comprarImovel"
               disabled
             />
           }
-          label="Deseja comprar imóvel?"
+          label="Comprar Imóvel"
           className={`${classes.checkboxLabel} disabled`}
         />
         <FormControlLabel
           control={
             <Checkbox
-              checked={selectedOptions.includes('Pagar dívidas')}
+              checked={selectedOption === 'Pagar dívidas'}
               onChange={() => handleCheckboxChange('Pagar dívidas')}
               name="pagarDividas"
             />
           }
-          label="Pagar dívidas?"
+          label="Pagar Dívidas"
           className={classes.checkboxLabel}
         />
       </div>

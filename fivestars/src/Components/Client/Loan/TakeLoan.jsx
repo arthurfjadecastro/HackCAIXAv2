@@ -2,24 +2,15 @@ import React, { useEffect, useReducer, useState } from "react";
 import Dialog from "@mui/material/Dialog";
 import { AppBar, Box, Grid, IconButton, Toolbar, Typography } from "@mui/material";
 import { RenderIf } from "../../../Utils";
-// import AppBar from "@mui/material/AppBar";
-// import Toolbar from "@mui/material/Toolbar";
-// import IconButton from "@mui/material/IconButton";
-// import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
 // import { Box, Grid } from "@mui/material";
 import Questionnaire  from "./Questionnaire";
+import { isNonEmptyString } from "../../UI/Inputs/Validations/Base";
 // import axios from "axios";
 // import { useMatchesSmartphone } from "../Breakpoints";
 // import { Item } from "../Frames";
-// import { ButtonCEF, ExpandButton } from "../Buttons";
-// import {
-//   isCPFValid,
-//   isEmail,
-//   isNonEmptyString,
-//   isPhoneNumber,
-// } from "../Inputs/Validations/Base";
+
 // import { RenderIf } from "../Utils";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -28,31 +19,20 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 // Initial state to user info
 const initialState = {
-  cpf: "",
-  phoneNumber: "",
-  email: "",
+  creditOption: "",
+  agreementOption: "",
   monetaryValue: "",
-  installments: "",
-  typeInstallments: "PRICE",
 };
 
 // Manage states of user information in a more organized and modular way
 const reducer = (state, action) => {
   switch (action.type) {
-    case "cpf":
-      return { ...state, cpf: action.payload };
-    case "phoneNumber":
-      return { ...state, phoneNumber: action.payload };
-    case "email":
-      return { ...state, email: action.payload };
+    case "creditOption":
+      return { ...state, creditOption: action.payload };
+    case "agreementOption":
+      return { ...state, agreementOption: action.payload };
     case "monetaryValue":
       return { ...state, monetaryValue: action.payload };
-    case "installments":
-      return { ...state, installments: action.payload };
-    case "typeInstallments":
-      return { ...state, typeInstallments: action.payload };
-    case "resetInstallments":
-      return { ...state, installments: null };
     case "resetState":
       return initialState;
     default:
@@ -60,15 +40,16 @@ const reducer = (state, action) => {
   }
 };
 
-function TakeLoanDialogsss({ isOpen, setClose }) {
+
+function TakeLoan({ isOpen, setClose }) {
   // State that stores the request data
-  const [responses, setResponses] = useState();
+//   const [responses, setResponses] = useState();
 
   // State created to store processed data
-  const [ETLData, setEtlData] = useState();
+//   const [ETLData, setEtlData] = useState();
 
   // State that iterates the simulation result by type
-  const newIterableData = {};
+//   const newIterableData = {};
 
   // Create reducer
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -81,53 +62,53 @@ function TakeLoanDialogsss({ isOpen, setClose }) {
     type: "resetState",
   });
 
-  const [activeStep, setActiveStep] = React.useState(0);
+//   const [activeStep, setActiveStep] = React.useState(0);
 
-  const resetInstallments = () => ({
-    type: "resetInstallments",
-  });
+//   const resetInstallments = () => ({
+//     type: "resetInstallments",
+//   });
 
   // Effect to Reset form
-  useEffect(() => {
-    setPage(1);
-    dispatch(resetState());
-    setShowAllInstallments(false);
-    setActiveStep(0);
-  }, [isOpen === false]);
+//   useEffect(() => {
+//     setPage(1);
+//     dispatch(resetState());
+//     setShowAllInstallments(false);
+//     setActiveStep(0);
+//   }, [isOpen === false]);
 
   // Effect that iterates over request response
-  useEffect(() => {
-    if (responses !== null && responses !== undefined) {
-      const newEtlData = {};
+//   useEffect(() => {
+//     if (responses !== null && responses !== undefined) {
+//       const newEtlData = {};
   
-      Object.keys(responses).forEach((prazo) => {
-        const resultadoSimulacao = responses[prazo].resultadoSimulacao;
-        resultadoSimulacao.forEach((item) => {
-          if (!newEtlData[item.tipo]) {
-            newEtlData[item.tipo] = {};
-          }
-          newEtlData[item.tipo][prazo] = item.parcelas;
-        });
-      });
+//       Object.keys(responses).forEach((prazo) => {
+//         const resultadoSimulacao = responses[prazo].resultadoSimulacao;
+//         resultadoSimulacao.forEach((item) => {
+//           if (!newEtlData[item.tipo]) {
+//             newEtlData[item.tipo] = {};
+//           }
+//           newEtlData[item.tipo][prazo] = item.parcelas;
+//         });
+//       });
   
-      setEtlData(newEtlData);
+//       setEtlData(newEtlData);
 
   
      
-    }
-  }, [responses]);
+//     }
+//   }, [responses]);
 
-  useEffect(() => {
-    setResponses(undefined);
-  }, [page < 3]);
+//   useEffect(() => {
+//     setResponses(undefined);
+//   }, [page < 3]);
 
-  const [showAllInstallments, setShowAllInstallments] = useState(false);
+//   const [showAllInstallments, setShowAllInstallments] = useState(false);
 
-  const handleShowAllInstallments = () => {
-    setShowAllInstallments(!showAllInstallments);
-  };
+//   const handleShowAllInstallments = () => {
+//     setShowAllInstallments(!showAllInstallments);
+//   };
 
-  const [showButtons, setShowButtons] = useState(true);
+//   const [showButtons, setShowButtons] = useState(true);
 
 //   const isMobile = useMatchesSmartphone();
 
@@ -172,21 +153,15 @@ function TakeLoanDialogsss({ isOpen, setClose }) {
 //   }, [numericValue]);
 
   // Validate buttons enabled and disabled
-//   const isContinueButtonEnabled = {
-//     1: (state) =>
-//       (isCPFValid(state.cpf) &&
-//         isPhoneNumber(state.phoneNumber) &&
-//         isEmail(state.email)) ||
-//       isNonEmptyString(state),
-//     2: (state) => !isValid && isNonEmptyString(state.monetaryValue),
-//     3: (state) => state.installments,
-//     4: (state) => true,
-//     5: (state) => true,
-//     6: (state) => true,
-//   };
+  const isContinueButtonEnabled = {
+    1: (state) => isNonEmptyString(state.creditOption),
+    2: (state) => true,
+    3: (state) => true
+  };
 
 
 
+  
   return (
     <div>
       <Dialog
@@ -227,11 +202,13 @@ function TakeLoanDialogsss({ isOpen, setClose }) {
           }}
         >
           <Questionnaire
+          state={state}
             page={page}
             titlePage={"Qual o tipo de crédito?"}
             handlePageChange={handlePageChange}
-            // page={page}
-            // dispatch={dispatch}
+            isContinueButtonEnabled={isContinueButtonEnabled}
+            // state={state}
+            dispatch={dispatch}
             // response={responses}
           />
           <Grid
@@ -252,7 +229,7 @@ function TakeLoanDialogsss({ isOpen, setClose }) {
                 {/* </Item> */}
               </Grid>
             </RenderIf>
-            <RenderIf predicate={page > 0 && page < 6 && showButtons === true}>
+            {/* <RenderIf predicate={page > 0 && page < 6 && showButtons === true}> */}
                 {/* <Item> */}
                   {/* <ButtonCEF
                     buttonTitle={page === 5 ? "Concluir" : "Continuar"}
@@ -264,8 +241,8 @@ function TakeLoanDialogsss({ isOpen, setClose }) {
                     }
                   /> */}
                 {/* </Item> */}
-            </RenderIf>
-            <RenderIf predicate={page > 1 && page < 5 && showButtons === true}>
+            {/* </RenderIf> */}
+            {/* <RenderIf predicate={page > 1 && page < 5 && showButtons === true}> */}
               {/* <Item>
                 <ButtonCEF
                   isContinueButtonEnabled={true}
@@ -273,7 +250,7 @@ function TakeLoanDialogsss({ isOpen, setClose }) {
                   handlePageChange={handleBack}
                 />
               </Item> */}
-            </RenderIf>
+            {/* </RenderIf> */}
           </Grid>
         </Box>
       </Dialog>
@@ -281,4 +258,4 @@ function TakeLoanDialogsss({ isOpen, setClose }) {
   );
 }
 
-export default TakeLoanDialogsss;
+export default TakeLoan;

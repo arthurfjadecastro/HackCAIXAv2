@@ -1,10 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { useMatchesSmartphone } from "../Breakpoints";
-import { AppBar, Box, Button, Grid, Toolbar, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { Email, Facebook, Instagram, Twitter } from "@mui/icons-material";
 import {useNavigate } from "react-router-dom";
 import { Footer, Navbar } from "../Resources";
 
@@ -40,8 +37,6 @@ function Home() {
                 container
                 justifyContent="center"
                 alignItems="center"
-                // alignContent={}
-                // spacing={2}
                 style={{height: "100vh", alignContent: isMobile ? "center" : "inherit"}}
               >
                 <Grid item xs={12} md={6}>
@@ -126,7 +121,7 @@ function Home() {
               </Grid>
             </div> */}
           </Slider>
-          {/* Footer */}
+          {/* Footer Component */}
           <Footer/>
       </Box>
     </>

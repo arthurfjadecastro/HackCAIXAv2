@@ -4,14 +4,14 @@ import { Grid, Typography } from '@mui/material';
 import { RenderIf } from '../../../Utils';
 import { DefaultButton } from '../../UI/Buttons';
 
-function Questionnaire({ page, handlePageChange, titlePage }) {
+function Questionnaire({ page, handlePageChange, titlePage,isContinueButtonEnabled,dispatch, state }) {
   return (
     <>
       <Grid container  direction="column" justifyContent="space-between" alignItems="center" style={{height: "100%", margin: 0,padding: 0}}>
       <Typography >{titlePage}</Typography>
         <Grid item>
           <RenderIf predicate={page === 1}>
-            <FirstPage />
+            <FirstPage dispatch={dispatch} />
           </RenderIf>
           <RenderIf predicate={page === 2}>
             <SecondPage />
@@ -20,7 +20,9 @@ function Questionnaire({ page, handlePageChange, titlePage }) {
             <ThirdPage />
           </RenderIf>
         </Grid>
-          <DefaultButton handlePageChange={handlePageChange} isContinueButtonEnabled={true} buttonTitle={"Continuar"} />
+          <DefaultButton handlePageChange={handlePageChange} isContinueButtonEnabled={isContinueButtonEnabled[page](
+                      state
+                    )} buttonTitle={"Continuar"} />
       </Grid>
     </>
   );

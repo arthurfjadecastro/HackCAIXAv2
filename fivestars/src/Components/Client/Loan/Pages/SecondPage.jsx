@@ -12,7 +12,7 @@ const useStyles = makeStyles({
   checkboxContainer: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
+    alignItems: 'left',
     gap: '8px',
   },
   checkboxLabel: {
@@ -69,7 +69,7 @@ function SecondPage() {
               name="comprarImovel"
             />
           }
-          label="Aposentado INSS"
+          label="Aposentado do INSS"
           className={classes.checkboxLabel}
         />
         <FormControlLabel
@@ -80,7 +80,7 @@ function SecondPage() {
               name="pagarDividas"
             />
           }
-          label="Demais convênios"
+          label="Conveniado com outros órgãos"
           className={classes.checkboxLabel}
         />
         <FormControlLabel
@@ -91,7 +91,7 @@ function SecondPage() {
               name="nenhum"
             />
           }
-          label="Nenhum"
+          label="Nenhum Convênio"
           className={classes.checkboxLabel}
         />
       </div>
