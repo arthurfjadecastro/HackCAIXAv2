@@ -57,8 +57,6 @@ function Login() {
                 </div>
             </Box>
           <Footer/>
-        
-
         </>
 
     );

@@ -9,7 +9,7 @@ import {useNavigate } from "react-router-dom";
 import { Footer, Navbar } from "../Resources";
 
 function Home() {
-  // State to open Questionnaire
+  
   const navigate = useNavigate()
   const handleLogin = () => {
     navigate("/Login");
