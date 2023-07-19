@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useMatchesSmartphone } from "../Breakpoints";
 import { Box, Grid, Typography } from "@mui/material";
 import Slider from "react-slick";
 import {useNavigate } from "react-router-dom";
 import { Footer, Navbar } from "../Resources";
+import useCreateAntecipacao from "../../Network/useCreateAntecipacao";
 
 function Home() {
   
@@ -11,6 +12,17 @@ function Home() {
   const handleLogin = () => {
     navigate("/Login");
 }
+
+const [postAntecipacao, [response, error]] = useCreateAntecipacao({ "valorDesejado": 15000,"codigo": 102 });
+
+useEffect(() => {
+  postAntecipacao();
+},[])
+
+// const handleCreateIncident = async e => {
+//   e.preventDefault();
+  
+// };
 
   // Settings to Carousel header in Home Page
   const settings = {
