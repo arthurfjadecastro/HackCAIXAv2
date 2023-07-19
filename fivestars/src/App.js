@@ -4,6 +4,9 @@ import { Route, BrowserRouter, Routes, Outlet, useNavigate } from "react-router-
 import { Login } from './Components/Login';
 import { Adm } from './Components/Adm';
 import { Client } from './Components/Client';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "./slick-list.css";
 
 
 function Layout() {

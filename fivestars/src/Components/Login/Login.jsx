@@ -14,9 +14,13 @@ function Login() {
     // const [username, setUsername] = useState("");
     // const [password, setPassword] = useState("");
     const handleLogin = () => {
-        navigate("/Adm");
-        // navigate("/Login");
-    }
+      if (username === "adm") {
+          navigate("/Adm");
+      } else {
+          navigate("/Client");
+      }
+  }
+  
 
     useEffect(() => {
         if (username !== "" && password !== "") {
