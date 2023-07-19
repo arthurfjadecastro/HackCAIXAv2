@@ -11,8 +11,7 @@ const images = [
 ];
 
 const useStyles = makeStyles({
-  root: {
-  },
+  root: {},
   card: {
     width: 128,
     height: 128,
@@ -24,6 +23,9 @@ const useStyles = makeStyles({
       transform: 'scale(1.1)'
     }
   },
+  highlightedCard: {
+    border: '2px solid #005CA9'
+  },
   media: {
     height: '100%'
   },
@@ -33,6 +35,17 @@ const useStyles = makeStyles({
     fontWeight: "regular",
     textAlign: "center",
     marginTop: 8
+  },
+  disabledCard: {
+    cursor: "default",
+    opacity: 0.3,
+    boxShadow: "none",
+    '&:hover': {
+      transform: 'none'
+    }
+  },
+  disabledText: {
+    color: "#666666"
   }
 });
 
@@ -59,15 +72,15 @@ function FirstPage() {
           <Grid container justifyContent="center">
             {images.map((image, index) => (
               <Grid item key={index}>
-                <Card className={classes.card}>
+                <Card className={`${classes.card} ${index === 0 ? classes.highlightedCard : ""} ${index > 0 ? classes.disabledCard : ""}`}>
                   <CardMedia
                     className={classes.media}
                     image={image}
                     title={`Image ${index + 1}`}
                   />
                 </Card>
-                <Typography className={classes.cardName}>
-                  {index === 0 && "Empréstimo"}
+                <Typography className={`${classes.cardName} ${index > 0 ? classes.disabledText : ""}`}>
+                  {index === 0 && "Empréstimos"}
                   {index === 1 && "Seguros"}
                   {index === 2 && "Investimentos"}
                 </Typography>
