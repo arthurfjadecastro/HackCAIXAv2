@@ -37,7 +37,7 @@ function Questionnaire({ page, handlePageChange, titlePage,isContinueButtonEnabl
             </Grid>
             <RenderIf predicate={page > 1 && page < 4}>
             <Grid style={{display: "flex", justifyContent: "center"}} item>
-                 <DefaultButton handlePageChange={handleBack} buttonTitle={"Voltar"} isContinueButtonEnabled={true} />
+                 <DefaultButton styleContrast={true} handlePageChange={handleBack} buttonTitle={"Voltar"} isContinueButtonEnabled={true} />
             </Grid>
             </RenderIf>  
         </Grid>
