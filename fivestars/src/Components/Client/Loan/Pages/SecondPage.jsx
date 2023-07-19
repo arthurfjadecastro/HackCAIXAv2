@@ -46,16 +46,15 @@ const useStyles = makeStyles({
   },
 });
 
-function SecondPage() {
+function SecondPage({dispatch}) {
   const classes = useStyles();
-  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [selectedOption, setSelectedOption] = useState(null);
 
   const handleCheckboxChange = (option) => {
-    if (selectedOptions.includes(option)) {
-      setSelectedOptions(selectedOptions.filter((item) => item !== option));
-    } else {
-      setSelectedOptions([...selectedOptions, option]);
-    }
+    setSelectedOption(option);
+
+    // Dispatch the action with the selected option
+    dispatch({ type: 'agreementOption', payload: option });
   };
 
   return (
@@ -64,10 +63,11 @@ function SecondPage() {
         <FormControlLabel
           control={
             <Checkbox
-              checked={selectedOptions.includes('Comprar imóvel')}
-              onChange={() => handleCheckboxChange('Comprar imóvel')}
-              name="comprarImovel"
-            />
+  checked={selectedOption ? selectedOption.includes('aposentado') : false}
+  onChange={() => handleCheckboxChange('aposentado')}
+  name="aposentado"
+/>
+
           }
           label="Aposentado do INSS"
           className={classes.checkboxLabel}
@@ -75,10 +75,11 @@ function SecondPage() {
         <FormControlLabel
           control={
             <Checkbox
-              checked={selectedOptions.includes('Pagar dívidas')}
-              onChange={() => handleCheckboxChange('Pagar dívidas')}
-              name="pagarDividas"
-            />
+  checked={selectedOption ? selectedOption.includes('outrosOrgaos') : false}
+  onChange={() => handleCheckboxChange('outrosOrgaos')}
+  name="outrosOrgaos"
+/>
+
           }
           label="Conveniado com outros órgãos"
           className={classes.checkboxLabel}
@@ -86,10 +87,11 @@ function SecondPage() {
         <FormControlLabel
           control={
             <Checkbox
-              checked={selectedOptions.includes('nenhum')}
-              onChange={() => handleCheckboxChange('nenhum')}
-              name="nenhum"
-            />
+  checked={selectedOption ? selectedOption.includes('nenhum') : false}
+  onChange={() => handleCheckboxChange('nenhum')}
+  name="nenhum"
+/>
+
           }
           label="Nenhum Convênio"
           className={classes.checkboxLabel}

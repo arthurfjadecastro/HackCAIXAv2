@@ -14,7 +14,7 @@ function Questionnaire({ page, handlePageChange, titlePage,isContinueButtonEnabl
             <FirstPage dispatch={dispatch} />
           </RenderIf>
           <RenderIf predicate={page === 2}>
-            <SecondPage />
+            <SecondPage dispatch={dispatch} />
           </RenderIf>
           <RenderIf predicate={page === 3}>
             <ThirdPage />
