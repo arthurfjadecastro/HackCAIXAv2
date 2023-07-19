@@ -63,24 +63,24 @@ function FirstPage({ dispatch }) {
         <FormControlLabel
           control={
             <Checkbox
-              checked={selectedOption === 'Comprar imóvel'}
-              onChange={() => handleCheckboxChange('Comprar imóvel')}
-              name="comprarImovel"
-              disabled
+              checked={selectedOption === 'Antecipação 13'}
+              onChange={() => handleCheckboxChange('Antecipação 13')}
+              name="Antecipação13"
+              
             />
           }
-          label="Comprar Imóvel"
-          className={`${classes.checkboxLabel} disabled`}
+          label="Antecipação 13"
+          className={classes.checkboxLabel}
         />
         <FormControlLabel
           control={
             <Checkbox
-              checked={selectedOption === 'Pagar dívidas'}
-              onChange={() => handleCheckboxChange('Pagar dívidas')}
-              name="pagarDividas"
+              checked={selectedOption === 'Crédito Parcelado'}
+              onChange={() => handleCheckboxChange('Crédito Parcelado')}
+              name="Crédito Parcelado"
             />
           }
-          label="Pagar Dívidas"
+          label="Crédito Parcelado"
           className={classes.checkboxLabel}
         />
       </div>

@@ -108,7 +108,7 @@ function TakeLoan({ isOpen, setClose }) {
 //     setShowAllInstallments(!showAllInstallments);
 //   };
 
-//   const [showButtons, setShowButtons] = useState(true);
+  
 
 //   const isMobile = useMatchesSmartphone();
 
@@ -130,13 +130,13 @@ function TakeLoan({ isOpen, setClose }) {
   };
   
 
-  // Back page of Questionnaire
-//   const handleBack = () => {
-//     setPage(page - 1);
-//     setActiveStep((prevActiveStep) => prevActiveStep - 1);
-//     setShowAllInstallments(false);
-//     dispatch(resetInstallments());
-//   };
+//   Back page of Questionnaire
+  const handleBack = () => {
+    setPage(page - 1);
+    // setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    // setShowAllInstallments(false);
+    // dispatch(resetInstallments());
+  };
 
 //   const [isValid, setIsValid] = useState("");
 //   const numericValue = parseInt(
@@ -159,10 +159,11 @@ function TakeLoan({ isOpen, setClose }) {
     3: (state) => isNonEmptyString(state.monetaryValue),
   };
 
+  console.log(state)
+
   return (
     <div>
       <Dialog
-        // fullScreen
         open={isOpen}
         onClose={() => setClose(false)}
         TransitionComponent={Transition}
@@ -186,27 +187,23 @@ function TakeLoan({ isOpen, setClose }) {
           style={{
             display: "flex",
             height: "100%",
-            // padding: isMobile ? 16 : 45,
             justifyContent: "space-between",
             flexDirection: "column",
             alignItems: "center",
             width: 500,
-            // height: 300,
             padding: 16, 
             justifyContent: "center",
             alignContent: "center",
-            // display: "inline-table"
           }}
         >
           <Questionnaire
+          handleBack={handleBack}
           state={state}
             page={page}
             titlePage={"Qual o tipo de crédito?"}
             handlePageChange={handlePageChange}
             isContinueButtonEnabled={isContinueButtonEnabled}
-            // state={state}
             dispatch={dispatch}
-            // response={responses}
           />
           <Grid
             container
@@ -226,28 +223,6 @@ function TakeLoan({ isOpen, setClose }) {
                 {/* </Item> */}
               </Grid>
             </RenderIf>
-            {/* <RenderIf predicate={page > 0 && page < 6 && showButtons === true}> */}
-                {/* <Item> */}
-                  {/* <ButtonCEF
-                    buttonTitle={page === 5 ? "Concluir" : "Continuar"}
-                    isContinueButtonEnabled={isContinueButtonEnabled[page](
-                      state
-                    )}
-                    handlePageChange={
-                      page <= 5 ? handlePageChange : setClose(false)
-                    }
-                  /> */}
-                {/* </Item> */}
-            {/* </RenderIf> */}
-            {/* <RenderIf predicate={page > 1 && page < 5 && showButtons === true}> */}
-              {/* <Item>
-                <ButtonCEF
-                  isContinueButtonEnabled={true}
-                  buttonTitle={"Voltar"}
-                  handlePageChange={handleBack}
-                />
-              </Item> */}
-            {/* </RenderIf> */}
           </Grid>
         </Box>
       </Dialog>

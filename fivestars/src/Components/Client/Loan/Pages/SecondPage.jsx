@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Checkbox, FormControlLabel, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import { RenderIf } from '../../../../Utils';
 
 const useStyles = makeStyles({
   title: {
@@ -46,7 +47,7 @@ const useStyles = makeStyles({
   },
 });
 
-function SecondPage({dispatch}) {
+function SecondPage({dispatch,creditOption}) {
   const classes = useStyles();
   const [selectedOption, setSelectedOption] = useState(null);
 
@@ -57,17 +58,20 @@ function SecondPage({dispatch}) {
     dispatch({ type: 'agreementOption', payload: option });
   };
 
+
+  
+  
   return (
     <>
+    <RenderIf predicate={creditOption === "Crédito Parcelado"}>
       <div className={classes.checkboxContainer}>
         <FormControlLabel
           control={
             <Checkbox
-  checked={selectedOption ? selectedOption.includes('aposentado') : false}
-  onChange={() => handleCheckboxChange('aposentado')}
-  name="aposentado"
-/>
-
+                checked={selectedOption ? selectedOption.includes('aposentado') : false}
+                onChange={() => handleCheckboxChange('aposentado')}
+                name="aposentado"
+            />
           }
           label="Aposentado do INSS"
           className={classes.checkboxLabel}
@@ -97,7 +101,12 @@ function SecondPage({dispatch}) {
           className={classes.checkboxLabel}
         />
       </div>
+      </RenderIf>
+      <RenderIf predicate={creditOption === "Antecipação 13"}>
+        TELA CHAMADA API
+      </RenderIf>
     </>
+    
   );
 }
 
