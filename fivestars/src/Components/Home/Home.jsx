@@ -40,20 +40,21 @@ function Home() {
                 container
                 justifyContent="center"
                 alignItems="center"
-                spacing={2}
-                style={{height: "100vh"}}
+                // alignContent={}
+                // spacing={2}
+                style={{height: "100vh", alignContent: isMobile ? "center" : "inherit"}}
               >
                 <Grid item xs={12} md={6}>
                   <Box sx={{ background: settings.gradientColor, p: 2 }}>
                     <Typography
                       style={{ fontSize: isMobile ? 22 : 32 }}
                       className="classText"
-                      textAlign="center"
+                      textAlign={isMobile ?  "center" : "right"}
                       variant="body1"
                       component="div"
                     >
-                      <span className="orange-text">Crédito sob medida </span>{" "} <br></br>
-                      experiência financeira descomplicada.
+                      experiência financeira <br></br> 
+                      <span className="orange-text">descomplicada. </span>{" "} 
                     </Typography>
                   </Box>
                 </Grid>
@@ -61,7 +62,7 @@ function Home() {
                   <Box
                     sx={{
                       display: "flex",
-                      justifyContent: "center",
+                      justifyContent: isMobile ? "center" : "left",
                       alignItems: "center",
                     }}
                   >
@@ -70,9 +71,10 @@ function Home() {
                       alt="Slide 2"
                       style={{
                         height: "auto",
-                        paddingTop: 64,
+                        // paddingTop: 64,
                         objectFit: "contain",
-                        maxWidth: "100%",
+                        maxWidth: isMobile ? "30%" : "100%",
+ 
                       }}
                     />
                   </Box>
