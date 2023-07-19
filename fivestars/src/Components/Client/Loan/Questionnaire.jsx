@@ -16,8 +16,8 @@ function Questionnaire({ page, handlePageChange, titlePage,isContinueButtonEnabl
           <RenderIf predicate={page === 2}>
             <SecondPage dispatch={dispatch} />
           </RenderIf>
-          <RenderIf predicate={page === 3}>
-            <ThirdPage />
+          <RenderIf  predicate={page === 3}>
+            <ThirdPage dispatch={dispatch} state={state} />
           </RenderIf>
         </Grid>
           <DefaultButton handlePageChange={handlePageChange} isContinueButtonEnabled={isContinueButtonEnabled[page](

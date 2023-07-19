@@ -69,12 +69,12 @@ function TakeLoan({ isOpen, setClose }) {
 //   });
 
   // Effect to Reset form
-//   useEffect(() => {
-//     setPage(1);
-//     dispatch(resetState());
-//     setShowAllInstallments(false);
-//     setActiveStep(0);
-//   }, [isOpen === false]);
+  useEffect(() => {
+    setPage(1);
+    dispatch(resetState());
+    // setShowAllInstallments(false);
+    // setActiveStep(0);
+  }, [isOpen === false]);
 
   // Effect that iterates over request response
 //   useEffect(() => {
@@ -156,14 +156,9 @@ function TakeLoan({ isOpen, setClose }) {
   const isContinueButtonEnabled = {
     1: (state) => isNonEmptyString(state.creditOption),
     2: (state) => isNonEmptyString(state.agreementOption),
-    3: (state) => true
+    3: (state) => isNonEmptyString(state.monetaryValue),
   };
 
-
-
-  
-
-  console.log(state)
   return (
     <div>
       <Dialog
