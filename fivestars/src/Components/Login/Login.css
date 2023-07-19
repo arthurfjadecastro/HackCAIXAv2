@@ -2,7 +2,8 @@
 
 
 .login-container {
-    background: linear-gradient(to right, #005CA9, #54BBAB);
+    /* background: linear-gradient(to right, #005CA9, #54BBAB); */
+    background: linear-gradient(to right, #0900A9, #54BBAB);
     height: 100vh;
     display: flex;
     justify-content: center;

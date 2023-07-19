@@ -1,7 +1,8 @@
 .slick-list {
   padding: 0 !important;
   margin: 0 !important;
-  background: linear-gradient(to right, #005ca9, #54bbab);
+  /* background: linear-gradient(to right, #005ca9, #54bbab); */
+  background: linear-gradient(to right, #0900A9, #54BBAB);
 }
 
 body {

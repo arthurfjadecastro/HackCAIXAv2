@@ -30,7 +30,7 @@ function Home() {
 
   return (
     <>
-      <AppBar position="absolute" style={{ background: "linear-gradient(to right, #005CA9, #54BBAB)" }}>
+      <AppBar position="absolute" style={{ background: "linear-gradient(to right, #0900A9, #54BBAB)" }}>
         <Toolbar style={{ minHeight: "65px !important" }}>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1, display: "flex" }}>
             <img src="/Images/negativo.png" alt="Slide 1" style={{ width: "128px" }} />
@@ -138,10 +138,11 @@ function Home() {
           position: "fixed",
           bottom: 0,
           width: "100%",
-          background: "linear-gradient(to right, #005CA9, #54BBAB)",
+          // background: "linear-gradient(to right, #005CA9, #54BBAB)",
+          background:" linear-gradient(to right, #0900A9, #54BBAB)"
         }}
       >
-        <Box p={3} style={{ background: "linear-gradient(to right, #005CA9, #54BBAB)" }}>
+        <Box p={3} style={{ background: "linear-gradient(to right, #0900A9, #54BBAB)" }}>
           <Box sx={{ display: "flex", justifyContent: "center", marginTop: "1rem" }}>
             <a href="https://pt-br.facebook.com/caixa/" target="_blank" rel="noopener noreferrer">
               <Facebook style={{ fontSize: "2rem", margin: "0.5rem", color: "white" }} />

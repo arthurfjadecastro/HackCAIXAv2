@@ -11,8 +11,6 @@ function Login() {
     const [password, setPassword] = useState("");
     const [buttonClass, setButtonClass] = useState("login-button");
     const navigate = useNavigate()
-    // const [username, setUsername] = useState("");
-    // const [password, setPassword] = useState("");
     const handleLogin = () => {
       if (username === "adm") {
           navigate("/Adm");
@@ -36,7 +34,7 @@ function Login() {
         <>
             <Box sx={{ flexGrow: 1 }} mx="auto" maxWidth="100%" style={{ width: "100%", overflow: "hidden", marginTop: 0 }}>
 
-                <AppBar position="absolute" style={{ background: "linear-gradient(to right, #005CA9, #54BBAB)" }}>
+                <AppBar position="absolute" style={{ background: "linear-gradient(to right, #0900A9, #54BBAB)" }}>
 
                     <Toolbar style={{ minHeight: "65px !important" }}>
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1, display: "flex" }}>
@@ -69,9 +67,9 @@ function Login() {
                     </form>
                 </div>
             </Box>
-            <Box sx={{ position: "fixed", bottom: 0, width: "100%", background: "linear-gradient(to right, #005CA9, #54BBAB)" }}>
+            <Box sx={{ position: "fixed", bottom: 0, width: "100%", background: "linear-gradient(to right, #0900A9, #54BBAB)" }}>
   
-          <Box p={3} style={{ background: "linear-gradient(to right, #005CA9, #54BBAB)" }}>
+          <Box p={3} style={{ background: "linear-gradient(to right, #0900A9, #54BBAB)" }}>
             <Box sx={{ display: "flex", justifyContent: "center", marginTop: "1rem" }}>
               <a href="https://pt-br.facebook.com/caixa/" target="_blank" rel="noopener noreferrer">
                 <Facebook style={{ fontSize: "2rem", margin: "0.5rem", color: "white" }} />
