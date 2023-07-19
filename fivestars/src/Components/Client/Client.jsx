@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { Footer, Navbar } from "../Resources";
 import { Grid } from "@mui/material";
-import ClientQuestionnaire  from "./ClientFlow/ClientQuestionnaire";
+import ClientFlow  from "./ClientFlow/ClientFlow";
 
 
 
@@ -19,8 +19,8 @@ function Client() {
       <>
         <Navbar login={false}/>
         <Grid container style={{ height: "100vh" }}>
-      <Grid item xs={6} >
-        <ClientQuestionnaire handlePageChange={handlePageChange} currentPage={page}/>
+      <Grid style={{display: "flex"}} item xs={6} >
+        <ClientFlow handlePageChange={handlePageChange} currentPage={page}/>
       </Grid>
       <Grid
         item

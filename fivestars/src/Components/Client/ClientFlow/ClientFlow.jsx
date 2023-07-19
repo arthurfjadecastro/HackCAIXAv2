@@ -1,8 +1,9 @@
+import React, {useState} from "react";
 import { Grid, Typography } from "@mui/material";
-import React from "react";
 import { RenderIf } from "../../../Utils";
 import { Card, CardMedia } from '@mui/material';
 import { makeStyles } from "@mui/styles";
+import { TakeLoan } from "../Loan";
 
 const images = [
   './images/hand_holding.png',
@@ -49,9 +50,10 @@ const useStyles = makeStyles({
   }
 });
 
-function FirstPage() {
-  const classes = useStyles();
 
+function ClientFlow({currentPage,handlePageChange}) {
+  const [isOpenDialog, setIsOpenDialog] = useState(false);
+  const classes = useStyles();
   return (
     <>
       <Grid container direction={"column"} justifyContent={"center"} alignContent={"center"}>
@@ -60,7 +62,7 @@ function FirstPage() {
             variant="h6"
             style={{
               fontWeight: "bold",
-              marginBottom: "8px",
+              marginottom: "8px",
               fontSize: "32px",
               textAlign: "center"
             }}
@@ -77,6 +79,7 @@ function FirstPage() {
                     className={classes.media}
                     image={image}
                     title={`Image ${index + 1}`}
+                    onClick={index === 0 ?() => setIsOpenDialog(true) : {}}
                   />
                 </Card>
                 <Typography className={`${classes.cardName} ${index > 0 ? classes.disabledText : ""}`}>
@@ -89,44 +92,9 @@ function FirstPage() {
           </Grid>
         </Grid>
       </Grid>
+      <TakeLoan isOpen={isOpenDialog} setClose={setIsOpenDialog} />
     </>
   );
 }
 
-function SecondPage() {
-  return (
-    <>
-      <h1>
-        Second Page
-      </h1>
-    </>
-  )
-}
-
-function ThirdPage() {
-  return (
-    <>
-      <h1>
-        Third Page
-      </h1>
-    </>
-  )
-}
-
-function ClientQuestionnaire({currentPage,handlePageChange}) {
-  return (
-    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100%" }}>
-      <RenderIf predicate={currentPage === 1}>
-        <FirstPage />
-      </RenderIf>
-      <RenderIf predicate={currentPage === 2}>
-        <SecondPage />
-      </RenderIf>
-      <RenderIf predicate={currentPage === 3}>
-        <ThirdPage />
-      </RenderIf>
-    </div>
-  );
-}
-
-export default ClientQuestionnaire;
+export default ClientFlow;
