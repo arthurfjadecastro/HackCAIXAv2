@@ -3,6 +3,9 @@ import { Grid } from '@mui/material';
 import {Monetary} from "../../../UI/Inputs"
 
 function ThirdPage({dispatch, state}) {
+
+  
+
   return (
     <>
     <Grid container>

@@ -46,9 +46,9 @@ const useStyles = makeStyles({
   },
 });
 
-function FirstPage({ dispatch }) {
+function FirstPage({ dispatch,state }) {
   const classes = useStyles();
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(state.creditOption);
 
   const handleCheckboxChange = (option) => {
     setSelectedOption(option);

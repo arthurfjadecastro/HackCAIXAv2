@@ -15,10 +15,14 @@ function Questionnaire({ page, handlePageChange, titlePage,isContinueButtonEnabl
       <Typography >{titlePage}</Typography>
         <Grid item>
           <RenderIf predicate={page === 1}>
-            <FirstPage dispatch={dispatch} />
+            <FirstPage state={state} dispatch={dispatch} />
           </RenderIf>
-          <RenderIf predicate={page === 2}>
-            <SecondPage creditOption={state.creditOption} dispatch={dispatch} />
+
+          <RenderIf predicate={page === 2 && state.creditOption === "Crédito Parcelado"}>
+            <SecondPage state={state} creditOption={state.creditOption} dispatch={dispatch} />
+          </RenderIf>
+          <RenderIf predicate={page === 2 && state.creditOption === "Antecipação 13"}>
+            <ThirdPage dispatch={dispatch} state={state} />
           </RenderIf>
           <RenderIf  predicate={page === 3}>
             <ThirdPage dispatch={dispatch} state={state} />

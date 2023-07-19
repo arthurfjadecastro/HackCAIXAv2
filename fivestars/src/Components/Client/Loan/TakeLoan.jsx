@@ -155,7 +155,7 @@ function TakeLoan({ isOpen, setClose }) {
   // Validate buttons enabled and disabled
   const isContinueButtonEnabled = {
     1: (state) => isNonEmptyString(state.creditOption),
-    2: (state) => isNonEmptyString(state.agreementOption),
+    2: (state) => state.creditOption === "Antecipação 13" && isNonEmptyString(state.monetaryValue) ? true :isNonEmptyString(state.agreementOption),
     3: (state) => isNonEmptyString(state.monetaryValue),
   };
 

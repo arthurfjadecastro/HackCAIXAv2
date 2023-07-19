@@ -47,9 +47,9 @@ const useStyles = makeStyles({
   },
 });
 
-function SecondPage({dispatch,creditOption}) {
+function SecondPage({dispatch,state}) {
   const classes = useStyles();
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(state.agreementOption);
 
   const handleCheckboxChange = (option) => {
     setSelectedOption(option);
@@ -63,7 +63,7 @@ function SecondPage({dispatch,creditOption}) {
   
   return (
     <>
-    <RenderIf predicate={creditOption === "Crédito Parcelado"}>
+    {/* <RenderIf predicate={creditOption === "Crédito Parcelado"}> */}
       <div className={classes.checkboxContainer}>
         <FormControlLabel
           control={
@@ -101,10 +101,10 @@ function SecondPage({dispatch,creditOption}) {
           className={classes.checkboxLabel}
         />
       </div>
-      </RenderIf>
-      <RenderIf predicate={creditOption === "Antecipação 13"}>
-        TELA CHAMADA API
-      </RenderIf>
+      {/* </RenderIf> */}
+      {/* <RenderIf predicate={creditOption === "Antecipação 13"}>
+        
+      </RenderIf> */}
     </>
     
   );
