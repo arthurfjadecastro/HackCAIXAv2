@@ -60,7 +60,7 @@ const reducer = (state, action) => {
   }
 };
 
-function TakeLoan({ isOpen, setClose }) {
+function TakeLoanDialogsss({ isOpen, setClose }) {
   // State that stores the request data
   const [responses, setResponses] = useState();
 
@@ -144,60 +144,9 @@ function TakeLoan({ isOpen, setClose }) {
 //   };
 
   // Method that makes the request when we switch from the third to the fourth page
-//   const handlePageChange = () => {
-//     if (page === 2) {
-//       setShowButtons(false);
-     
-//       // Request to 6x
-//       makeRequest(6)
-//         .then((response) => {
-//           setResponses((prevResponses) => ({
-//             ...prevResponses,
-//             parcelas6: response.data,
-//           }));
-//         })
-//         .catch((err) => {
-//           console.error("Ops! Ocorreu um erro: " + err);
-//         });
-  
-//       // Request to 12x
-//       makeRequest(12)
-//         .then((response) => {
-//           setResponses((prevResponses) => ({
-//             ...prevResponses,
-//             parcelas12: response.data,
-//           }));
-//         })
-//         .catch((err) => {
-//           console.error("Ops! Ocorreu um erro: " + err);
-//         });
-  
-//       // Request to 24x
-//       makeRequest(24)
-//   .then((response) => {
-//     setResponses((prevResponses) => ({
-//       ...prevResponses,
-//       parcelas24: response.data,
-//     }));
-
-//     // Extrair o valor da taxa de juros do objeto de resposta
-//     const taxaJuros = response.data.taxaJuros;
-
-//     // Armazenar a taxa de juros no singleton
-//     setRate(taxaJuros);
-//   })
-//   .catch((err) => {
-//     console.error("Ops! Ocorreu um erro: " + err);
-//   })
-//   .finally(() => {
-//     setTimeout(() => {
-//       setShowButtons(true);
-//     }, 150);
-//   });
-//     }
-//     setActiveStep((prevActiveStep) => prevActiveStep + 1);
-//     setPage(page + 1);
-//   };
+  const handlePageChange = () => {
+    setPage(page + 1);
+  };
   
 
   // Back page of Questionnaire
@@ -269,17 +218,18 @@ function TakeLoan({ isOpen, setClose }) {
             justifyContent: "space-between",
             flexDirection: "column",
             alignItems: "center",
+            width: 500,
+            // height: 300,
+            padding: 16, 
+            justifyContent: "center",
+            alignContent: "center",
+            // display: "inline-table"
           }}
         >
           <Questionnaire
-          page={page}
-            // activeStep={activeStep}
-            // showAllInstallments={showAllInstallments}
-            // setClose={setClose}
-            // ETLData={ETLData}
-            // state={state}
-            // handleBack={handleBack}
-            // handlePageChange={handlePageChange}
+            page={page}
+            titlePage={"Qual o tipo de crédito?"}
+            handlePageChange={handlePageChange}
             // page={page}
             // dispatch={dispatch}
             // response={responses}
@@ -295,8 +245,6 @@ function TakeLoan({ isOpen, setClose }) {
               <Grid item>
                 {/* <Item> */}
                 {/* <ExpandButton variant="text" onClick={handleShowAllInstallments}> */}
-            
-
                {/* </ExpandButton> */}
                   {/* <Button variant="outlined" onClick={handleShowAllInstallments}>
                     {showAllInstallments ? "Resumo" : "Mais informações"}
@@ -305,7 +253,6 @@ function TakeLoan({ isOpen, setClose }) {
               </Grid>
             </RenderIf>
             <RenderIf predicate={page > 0 && page < 6 && showButtons === true}>
-              
                 {/* <Item> */}
                   {/* <ButtonCEF
                     buttonTitle={page === 5 ? "Concluir" : "Continuar"}
@@ -317,9 +264,7 @@ function TakeLoan({ isOpen, setClose }) {
                     }
                   /> */}
                 {/* </Item> */}
-              
             </RenderIf>
-
             <RenderIf predicate={page > 1 && page < 5 && showButtons === true}>
               {/* <Item>
                 <ButtonCEF
@@ -336,4 +281,4 @@ function TakeLoan({ isOpen, setClose }) {
   );
 }
 
-export default TakeLoan;
+export default TakeLoanDialogsss;

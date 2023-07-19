@@ -1,11 +1,23 @@
 import React from 'react';
+import { Grid } from '@mui/material';
+import {Monetary} from "../../../UI/Inputs"
 
 function ThirdPage() {
   return (
     <>
-    <h1>third page</h1>
+    <Grid container>
+        <Grid item>
+        <Monetary
+            value={""}
+            // onChange={(event) =>
+            //   dispatch({ type: "monetaryValue", payload: event.target.value })
+            // }
+          />
+        </Grid>
+    </Grid>
     </>
   );
 }
+
 
 export default ThirdPage;

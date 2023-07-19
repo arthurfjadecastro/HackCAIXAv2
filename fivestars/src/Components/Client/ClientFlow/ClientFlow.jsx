@@ -79,7 +79,7 @@ function ClientFlow({currentPage,handlePageChange}) {
                     className={classes.media}
                     image={image}
                     title={`Image ${index + 1}`}
-                    onClick={index === 0 ?() => setIsOpenDialog(true) : {}}
+                    onClick={index === 0 ?() => setIsOpenDialog(true) : null}
                   />
                 </Card>
                 <Typography className={`${classes.cardName} ${index > 0 ? classes.disabledText : ""}`}>
