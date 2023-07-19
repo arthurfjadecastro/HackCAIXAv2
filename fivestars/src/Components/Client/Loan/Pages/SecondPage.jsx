@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Checkbox, FormControlLabel, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { RenderIf } from '../../../../Utils';
 
 const useStyles = makeStyles({
   title: {
