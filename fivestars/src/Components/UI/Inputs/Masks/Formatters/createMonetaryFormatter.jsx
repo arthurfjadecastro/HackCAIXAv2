@@ -1,4 +1,4 @@
-const formatMoney = (value, min = 0, max = 10000) => {
+const formatMoney = (value, min = 0, max = 100000) => {
   if (typeof value !== "string") {
     throw new Error(`The value to be formatted must be of type string`);
   }

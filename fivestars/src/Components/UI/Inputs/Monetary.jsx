@@ -33,7 +33,7 @@ const Monetary = ({ helperText, onBlur, value, onChange, type }) => {
           placeholder="R$ 00.000"
           label={"Valor Solicitado"}
           helperText={
-            value === "R$ 10.000" ? "Limite máximo de R$ 10.000,00" : textValueByHelperText ? textValueByHelperText : helperText
+            value === "R$ 100.000" ? "Limite máximo de R$ 100.000,00" : textValueByHelperText ? textValueByHelperText : helperText
           }
           error={textValueByHelperText ? textValueByHelperText : helperText}
           type={type}

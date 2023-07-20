@@ -2,16 +2,7 @@ import React from "react";
 import { Paper, Grid, Typography, styled, Divider } from "@mui/material";
 import { customFormatNumber, formatinteresetAmount } from "./Resources";
 import { CheckCircle } from "@mui/icons-material";
-import CircularProgress from "@mui/material/CircularProgress";
-import { RenderIf } from "../../../Utils";
 
-const FullScreenLoading = (props) => {
-  return (
-    <CircularProgress
-      style={{ position: "absolute", top: "50%", left: "50%" }}
-    />
-  );
-};
 
 
 
@@ -41,12 +32,14 @@ const GrayText = styled(Typography)({
 
 const LoanDetails = ({response
 }) => {
+
+  // const isDataAvailable = response && response.data;
+
+  // console.log(isDataAvailable)
   return (
     <>
-       <RenderIf predicate={response === null || response === undefined}>
-        <FullScreenLoading />
-      </RenderIf>
-      <RenderIf predicate={response !== null || response !== undefined}>
+   
+      {/* <RenderIf predicate={isDataAvailable}> */}
     
   
     <Frame>
@@ -92,7 +85,7 @@ const LoanDetails = ({response
                 }}
               >
                 {/* R$ 5.520,58 */}
-                R$ {customFormatNumber(response && response.data && response.data.resultadoSimulacao)}
+                R$ {customFormatNumber(response?.data?.resultadoSimulacao)}
               </Typography>
             </Grid>
             <Grid item>
@@ -109,7 +102,7 @@ const LoanDetails = ({response
                 style={{ whiteSpace: "nowrap" }}
               >
                 {/* R$ 479,72 */}
-                R$ {customFormatNumber(response && response.data && response.data.valorDesconto)}
+                R$ {customFormatNumber(response && response?.data && response?.data?.valorDesconto)}
               </Typography>
             </Grid>
             <Grid item>
@@ -125,7 +118,7 @@ const LoanDetails = ({response
                 align="center"
                 style={{ whiteSpace: "nowrap" }}
               >
-                <span style={{ color: "#FF6600" }}>{(response && response.data && response.data.taxaJuros * 100).toFixed(2).replace('.', ',') + '%'}</span>
+                <span style={{ color: "#FF6600" }}>{(response && response?.data && response?.data?.taxaJuros * 100).toFixed(2).replace('.', ',') + '%'}</span>
                 {/* R$ {formatinteresetAmount()} */}
               </GrayText>
             </Grid>
@@ -133,7 +126,7 @@ const LoanDetails = ({response
         </Grid>
       </Grid>
     </Frame>
-    </RenderIf>
+    {/* </RenderIf> */}
     </>
   );
 };

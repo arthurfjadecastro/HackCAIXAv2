@@ -148,9 +148,9 @@ function TakeLoan({ isOpen, setClose }) {
           }}
         >
           <Questionnaire
-          response={response}
-          handleBack={handleBack}
-          state={state}
+            response={response}
+            handleBack={handleBack}
+            state={state}
             page={page}
             handlePageChange={handlePageChange}
             isContinueButtonEnabled={isContinueButtonEnabled}
