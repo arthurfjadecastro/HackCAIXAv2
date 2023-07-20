@@ -78,6 +78,7 @@ function FirstPage({ dispatch,state }) {
               checked={selectedOption === 'Crédito Parcelado'}
               onChange={() => handleCheckboxChange('Crédito Parcelado')}
               name="Crédito Parcelado"
+              disabled
             />
           }
           label="Crédito Parcelado"

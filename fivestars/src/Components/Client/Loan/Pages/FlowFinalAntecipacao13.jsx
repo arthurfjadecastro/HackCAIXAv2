@@ -31,9 +31,10 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     color: grey[50],
-    background: grey[800],
+    textDecoration: "underline",
+    background: "transparent",
     '&:hover': {
-      background: grey[900],
+      background: "transparent",
     },
   },
 }));
@@ -62,12 +63,6 @@ function FlowFinalAntecipacao13() {
         <>
             <FramePaperRS variant="googlePlay" textButton={"Android"} />
         <FramePaperRS variant="iOS" textButton={"Apple"} />
-{/* 
-        <FramePaper variant="whatsapp" textButton={"Fale com um Gerente"} />
-        <FramePaper
-          variant="openFinance"
-          textButton={"Compartilhe seus dados"}
-        /> */}
         </>
       )}
     </Card>
