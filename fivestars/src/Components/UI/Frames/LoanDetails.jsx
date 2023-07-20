@@ -32,15 +32,9 @@ const GrayText = styled(Typography)({
 const LoanDetails = ({response
 }) => {
 
-  // const isDataAvailable = response && response.data;
 
-  // console.log(isDataAvailable)
   return (
     <>
-   
-      {/* <RenderIf predicate={isDataAvailable}> */}
-    
-  
     <Frame>
       <Grid
         justifyContent="space-between"
@@ -83,8 +77,8 @@ const LoanDetails = ({response
                   fontSize: "28px",
                 }}
               >
-                R$ 5.520,58
-                {/* R$ {customFormatNumber(response?.data?.resultadoSimulacao)} */}
+                {/* R$ 5.520,58 */}
+                R$ {customFormatNumber(response?.data?.resultadoSimulacao)}
               </Typography>
             </Grid>
             <Grid item>
@@ -100,8 +94,8 @@ const LoanDetails = ({response
                 align="center"
                 style={{ whiteSpace: "nowrap" }}
               >
-                R$ 479,72
-                {/* R$ {customFormatNumber(response && response?.data && response?.data?.valorDesconto)} */}
+                {/* R$ 479,72 */}
+                R$ {customFormatNumber(response && response?.data && response?.data?.valorDesconto)}
               </Typography>
             </Grid>
             <Grid item>
@@ -117,7 +111,7 @@ const LoanDetails = ({response
                 align="center"
                 style={{ whiteSpace: "nowrap" }}
               >
-                {/* <span style={{ color: "#FF6600" }}>{(response && response?.data && response?.data?.taxaJuros * 100).toFixed(2).replace('.', ',') + '%'}</span> */}
+                <span style={{ color: "#FF6600" }}>{(response && response?.data && response?.data?.taxaJuros * 100).toFixed(2).replace('.', ',') + '%'}</span>
                 {/* R$ {formatinteresetAmount()} */}
               </GrayText>
             </Grid>
@@ -127,11 +121,9 @@ const LoanDetails = ({response
     </Frame>
     <br></br>
     <FramePaperRS variant="openFinance" textButton={""} />
-    {/* <Typography style={{textAlign: "center"}} variant="body2"  >Com o Open Finance da CAIXA, você compartilha seus dados de forma segura e obtém benefícios em produtos e serviços. </Typography> */}
     <Typography style={{ textAlign: "center" }} variant="body2">
       Com o <span style={{ color: '#FF6600' }}>Open Finance da CAIXA</span>, <br></br>você compartilha <br></br> seus dados de forma <br></br>segura e obtém benefícios <br></br>em produtos e serviços.
     </Typography>
-    {/* </RenderIf> */}
     </>
   );
 };

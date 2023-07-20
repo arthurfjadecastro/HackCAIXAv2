@@ -16,9 +16,9 @@ const FullScreenLoading = (props) => {
 function FourthPageByAntecipacao({ response }) {
   return (
     <>
-    {/* {response === null && <FullScreenLoading />} */}
-    {/* {response && <LoanDetails response={response} />} */}
-     <LoanDetails response={response}/>
+    {response === null && <FullScreenLoading />}
+    {response && <LoanDetails response={response} />}
+     {/* <LoanDetails response={response}/> */}
     </>
   );
 }
