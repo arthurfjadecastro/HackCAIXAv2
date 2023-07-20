@@ -5,8 +5,6 @@ import ClientFlow  from "./ClientFlow/ClientFlow";
 import useCreateAntecipacao from "../../Network/useCreateAntecipacao";
 
 
-
-
 function Client() {
 
     const [page, setPage] = useState(1);
@@ -14,7 +12,7 @@ function Client() {
     const handlePageChange = () => {
         // setActiveStep((prevActiveStep) => prevActiveStep + 1);
         setPage(page + 1);
-      };
+    };
 
     return (
       <>

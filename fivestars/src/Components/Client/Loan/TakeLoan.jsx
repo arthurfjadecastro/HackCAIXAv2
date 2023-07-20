@@ -7,6 +7,7 @@ import Slide from "@mui/material/Slide";
 // import { Box, Grid } from "@mui/material";
 import Questionnaire  from "./Questionnaire";
 import { isNonEmptyString } from "../../UI/Inputs/Validations/Base";
+import useCreateAntecipacao from "../../../Network/useCreateAntecipacao";
 // import axios from "axios";
 // import { useMatchesSmartphone } from "../Breakpoints";
 // import { Item } from "../Frames";
@@ -22,6 +23,8 @@ const initialState = {
   creditOption: "",
   agreementOption: "",
   monetaryValue: "",
+  codigo: 102,
+  numericValue: ""
 };
 
 // Manage states of user information in a more organized and modular way
@@ -35,6 +38,8 @@ const reducer = (state, action) => {
       return { ...state, monetaryValue: action.payload };
     case "resetState":
       return initialState;
+    case "numericValue":
+        return {...state, numericValue: action.payload}
     default:
       return state;
   }
@@ -54,79 +59,39 @@ function TakeLoan({ isOpen, setClose }) {
   // Create reducer
   const [state, dispatch] = useReducer(reducer, initialState);
 
+ 
   // Create state page of Questionnaire
   const [page, setPage] = useState(1);
-
+  const [postAntecipacao, [response, error]] = useCreateAntecipacao({ valorDesejado: state.numericValue, codigo: state.codigo });
+  console.log("page")    
+  console.log(page)
+  
   // Action to reset Questionnaire
   const resetState = () => ({
     type: "resetState",
   });
 
-//   const [activeStep, setActiveStep] = React.useState(0);
-
-//   const resetInstallments = () => ({
-//     type: "resetInstallments",
-//   });
 
   // Effect to Reset form
   useEffect(() => {
     setPage(1);
     dispatch(resetState());
-    // setShowAllInstallments(false);
     // setActiveStep(0);
   }, [isOpen === false]);
 
-  // Effect that iterates over request response
-//   useEffect(() => {
-//     if (responses !== null && responses !== undefined) {
-//       const newEtlData = {};
-  
-//       Object.keys(responses).forEach((prazo) => {
-//         const resultadoSimulacao = responses[prazo].resultadoSimulacao;
-//         resultadoSimulacao.forEach((item) => {
-//           if (!newEtlData[item.tipo]) {
-//             newEtlData[item.tipo] = {};
-//           }
-//           newEtlData[item.tipo][prazo] = item.parcelas;
-//         });
-//       });
-  
-//       setEtlData(newEtlData);
-
-  
-     
-//     }
-//   }, [responses]);
-
-//   useEffect(() => {
-//     setResponses(undefined);
-//   }, [page < 3]);
-
-//   const [showAllInstallments, setShowAllInstallments] = useState(false);
-
-//   const handleShowAllInstallments = () => {
-//     setShowAllInstallments(!showAllInstallments);
-//   };
-
-  
-
-//   const isMobile = useMatchesSmartphone();
-
-//   const makeRequest = (prazo) => {
-//     const numericValue = parseInt(
-//       state.monetaryValue.replace(/[^0-9.-]+/g, "").replace(".", ""),
-//       10
-//     );
-  
-//     return axios.post("https://apphackaixades.azurewebsites.net/api/Simulacao", {
-//       valorDesejado: numericValue,
-//       prazo: prazo,
-//     });
-//   };
+ 
+  const handleCreateAntecipacao13 = async e => {
+    // e.preventDeafult()
+    await postAntecipacao()
+  }
 
   // Method that makes the request when we switch from the third to the fourth page
   const handlePageChange = () => {
+    console.log("ae")
     setPage(page + 1);
+    if(page === 2 && state.creditOption === "Antecipação 13"){
+        handleCreateAntecipacao13()
+    }
   };
   
 
@@ -138,25 +103,26 @@ function TakeLoan({ isOpen, setClose }) {
     // dispatch(resetInstallments());
   };
 
-//   const [isValid, setIsValid] = useState("");
-//   const numericValue = parseInt(
-//     state.monetaryValue.replace(/[^0-9.-]+/g, "").replace(".", ""),
-//     10
-//   );
+  const [isValid, setIsValid] = useState("");
+  const numericValue = parseInt(
+    state.monetaryValue.replace(/[^0-9.-]+/g, "").replace(".", ""),
+    10
+  );
 
-//   useEffect(() => {
-//     if (numericValue < 200 || numericValue > 10000) {
-//       setIsValid(true);
-//     } else {
-//       setIsValid(false);
-//     }
-//   }, [numericValue]);
+  useEffect(() => {
+    if (numericValue < 200 || numericValue > 100000) {
+      setIsValid(true);
+    } else {
+      setIsValid(false);
+    }
+    dispatch({ type: 'numericValue', payload: numericValue });
+  }, [numericValue]);
 
   // Validate buttons enabled and disabled
   const isContinueButtonEnabled = {
     1: (state) => isNonEmptyString(state.creditOption),
-    2: (state) => state.creditOption === "Antecipação 13" && isNonEmptyString(state.monetaryValue) ? true :isNonEmptyString(state.agreementOption),
-    3: (state) => isNonEmptyString(state.monetaryValue),
+    2: (state) => !isValid && state.creditOption === "Antecipação 13" && isNonEmptyString(state.monetaryValue) ? true :isNonEmptyString(state.agreementOption),
+    3: (state) => !isValid && isNonEmptyString(state.monetaryValue),
   };
 
   console.log(state)
