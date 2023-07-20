@@ -59,7 +59,7 @@
             </Grid>
             <Grid container justifyContent={'center'} spacing={2} direction={'column'}>
             <Grid style={{ display: 'flex', justifyContent: 'center' }} item>
-                <DefaultButton state={state} handlePageChange={handlePageChange} isContinueButtonEnabled={isContinueButtonEnabled[page](state)} buttonTitle={page === 3 && state.creditOption === "Antecipação 13" ? "Contratar" : 'Continuar' } />
+                <DefaultButton state={state} handlePageChange={handlePageChange} isContinueButtonEnabled={isContinueButtonEnabled[page](state)} buttonTitle={page === 4 ? "Concluir" : page === 3 && state.creditOption === "Antecipação 13" ? "Contratar" : 'Continuar' } />
             </Grid>
             <RenderIf predicate={page > 1 && page < 4}>
                 <Grid style={{ display: 'flex', justifyContent: 'center' }} item>
