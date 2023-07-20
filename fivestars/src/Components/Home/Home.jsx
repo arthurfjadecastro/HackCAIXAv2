@@ -69,7 +69,7 @@ function Home() {
                         height: "auto",
                         // paddingTop: 64,
                         objectFit: "contain",
-                        maxWidth: isMobile ? "30%" : "100%",
+                        maxWidth: isMobile ? "30%" : "300px",
  
                       }}
                     />
@@ -80,7 +80,7 @@ function Home() {
             <div>
               <Grid
                 container
-                style={{ height: isMobile ? "50%" : "100vh" }}
+                style={{ height: isMobile ? "60vh" : "100vh" }}
                 justifyContent="center"
                 alignItems="center"
                 spacing={2}

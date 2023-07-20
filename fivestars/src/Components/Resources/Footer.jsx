@@ -20,7 +20,7 @@ function Footer() {
         background:" linear-gradient(to right, #0900A9, #54BBAB)"
       }}
     >
-      <Box p={3} style={{ background: "linear-gradient(to right, #0900A9, #54BBAB)" }}>
+      <Box p={1} style={{ background: "linear-gradient(to right, #0900A9, #54BBAB)" }}>
         <Box sx={{ display: "flex", justifyContent: "center", marginTop: "1rem" }}>
           <a href="https://pt-br.facebook.com/caixa/" target="_blank" rel="noopener noreferrer">
             <Facebook style={{ fontSize: "2rem", margin: "0.5rem", color: "white" }} />

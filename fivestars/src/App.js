@@ -7,11 +7,13 @@ import { Client } from './Components/Client';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./slick-list.css";
+import { useMatchesSmartphone } from './Components/Breakpoints';
 
 
 function Layout() {
+  const isMobile = useMatchesSmartphone();
   return (
-    <div>
+    <div style={{overflow: isMobile ? "hidden" : null}} >
       <Home></Home>
     </div>
   )
