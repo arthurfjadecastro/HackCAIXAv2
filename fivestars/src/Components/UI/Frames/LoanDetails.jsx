@@ -2,12 +2,11 @@ import React from "react";
 import { Paper, Grid, Typography, styled, Divider } from "@mui/material";
 import { customFormatNumber, formatinteresetAmount } from "./Resources";
 import { CheckCircle } from "@mui/icons-material";
-
-
+import { FramePaperRS } from ".";
 
 
 const Frame = styled(Paper)(({ theme }) => ({
-  backgroundColor: "transparent",
+  backgroundColor: "white",
   padding: theme.spacing(2),
   borderRadius: theme.spacing(1),
   width: 300
@@ -126,6 +125,12 @@ const LoanDetails = ({response
         </Grid>
       </Grid>
     </Frame>
+    <br></br>
+    <FramePaperRS variant="openFinance" textButton={""} />
+    {/* <Typography style={{textAlign: "center"}} variant="body2"  >Com o Open Finance da CAIXA, você compartilha seus dados de forma segura e obtém benefícios em produtos e serviços. </Typography> */}
+    <Typography style={{ textAlign: "center" }} variant="body2">
+      Com o <span style={{ color: '#FF6600' }}>Open Finance da CAIXA</span>, você compartilha seus dados de forma segura e obtém benefícios em produtos e serviços.
+    </Typography>
     {/* </RenderIf> */}
     </>
   );

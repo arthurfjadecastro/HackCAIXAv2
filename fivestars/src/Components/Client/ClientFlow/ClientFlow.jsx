@@ -74,7 +74,7 @@ function ClientFlow({ currentPage, handlePageChange }) {
               textAlign: "center"
             }}
           >
-            <span style={{ color: "#FF6600" }}>{"Qual opção você deseja"}</span>{" "}
+            <span style={{ color: "#FF6600" }}>{"Qual opção você deseja?"}</span>{" "}
           </Typography>
         </Grid>
         <Grid item>
@@ -85,7 +85,7 @@ function ClientFlow({ currentPage, handlePageChange }) {
                   <CardMedia
                     className={classes.media}
                     image={image}
-                    title={`Image ${index + 1}`}
+                    // title={`Image ${index + 1}`}
                     onClick={index === 0 ? () => setIsOpenDialog(true) : null}
                   />
                 </Card>

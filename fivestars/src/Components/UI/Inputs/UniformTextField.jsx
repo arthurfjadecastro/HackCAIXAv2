@@ -5,7 +5,7 @@ const UniformTextField = styled(TextField)(({ theme }) => ({
   color: "#005CA9",
   height: 70,
   userSelect: "contain",
-  width: "100%",
+  width: "310px",
   maxWidth: "initial",
   minWidth: "auto",
   margin: 0,

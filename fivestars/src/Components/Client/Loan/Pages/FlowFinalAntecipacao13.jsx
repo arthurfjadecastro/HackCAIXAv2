@@ -3,6 +3,7 @@ import { Card, Typography, IconButton } from '@mui/material';
 import { makeStyles } from "@mui/styles";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { orange, blue, grey, green } from '@mui/material/colors';
+import { FramePaper, FramePaperRS } from '../../../UI/Frames';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,22 +50,24 @@ function FlowFinalAntecipacao13() {
     <Card className={classes.root}>
       <CheckCircleIcon className={classes.icon} />
       <Typography variant="h6" className={classes.message}>
-        Parabéns! <br /> Sua solicitação de crédito foi aprovada.
+        Parabéns! <br /> Sua solicitação de crédito foi aprovada.<br></br><br></br>
       </Typography>
-      <Typography variant="body1">
-        Agora você pode acompanhar o progresso do seu crédito em nosso aplicativo.
+      <Typography style={{fontSize: 14}} variant="body1">
+      Acompanhe o progresso da sua solicitação de crédito no aplicativo CAIXA. <br></br><br></br>Verifique as etapas em tempo real e obtenha mais informações sobre o seu empréstimo.
       </Typography>
       <IconButton className={classes.button} onClick={handleButtonClick}>
         {isExpanded ? 'Ver menos' : 'Ver mais'}
       </IconButton>
       {isExpanded && (
         <>
-          <Typography variant="body2" color="inherit">
-            Você receberá um e-mail com mais informações em breve.
-          </Typography>
-          <Typography variant="body2" color="inherit">
-            Obrigado por escolher nossos serviços!
-          </Typography>
+            <FramePaperRS variant="googlePlay" textButton={"Android"} />
+        <FramePaperRS variant="iOS" textButton={"Apple"} />
+{/* 
+        <FramePaper variant="whatsapp" textButton={"Fale com um Gerente"} />
+        <FramePaper
+          variant="openFinance"
+          textButton={"Compartilhe seus dados"}
+        /> */}
         </>
       )}
     </Card>
