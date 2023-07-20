@@ -1,18 +1,11 @@
 import React, { useEffect, useReducer, useState } from "react";
 import Dialog from "@mui/material/Dialog";
 import { AppBar, Box, Grid, IconButton, Toolbar, Typography } from "@mui/material";
-import { RenderIf } from "../../../Utils";
 import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
-// import { Box, Grid } from "@mui/material";
 import Questionnaire  from "./Questionnaire";
 import { isNonEmptyString } from "../../UI/Inputs/Validations/Base";
 import useCreateAntecipacao from "../../../Network/useCreateAntecipacao";
-// import axios from "axios";
-// import { useMatchesSmartphone } from "../Breakpoints";
-// import { Item } from "../Frames";
-
-// import { RenderIf } from "../Utils";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -47,30 +40,17 @@ const reducer = (state, action) => {
 
 
 function TakeLoan({ isOpen, setClose }) {
-  // State that stores the request data
-//   const [responses, setResponses] = useState();
-
-  // State created to store processed data
-//   const [ETLData, setEtlData] = useState();
-
-  // State that iterates the simulation result by type
-//   const newIterableData = {};
-
-  // Create reducer
   const [state, dispatch] = useReducer(reducer, initialState);
 
- 
   // Create state page of Questionnaire
   const [page, setPage] = useState(1);
   const [postAntecipacao, [response, error]] = useCreateAntecipacao({ valorDesejado: state.numericValue, codigo: state.codigo });
-  console.log("page")    
-  console.log(page)
+
   
   // Action to reset Questionnaire
   const resetState = () => ({
     type: "resetState",
   });
-
 
   // Effect to Reset form
   useEffect(() => {
@@ -87,10 +67,12 @@ function TakeLoan({ isOpen, setClose }) {
 
   // Method that makes the request when we switch from the third to the fourth page
   const handlePageChange = () => {
-    console.log("ae")
     setPage(page + 1);
     if(page === 2 && state.creditOption === "Antecipação 13"){
         handleCreateAntecipacao13()
+    }
+    if(page === 4 && state.creditOption === "Antecipação 13"){
+        setClose(false)
     }
   };
   
@@ -123,9 +105,11 @@ function TakeLoan({ isOpen, setClose }) {
     1: (state) => isNonEmptyString(state.creditOption),
     2: (state) => !isValid && state.creditOption === "Antecipação 13" && isNonEmptyString(state.monetaryValue) ? true :isNonEmptyString(state.agreementOption),
     3: (state) => !isValid && isNonEmptyString(state.monetaryValue),
+    4: (state) => true,
+    5: (state) => true
   };
-
-  console.log(state)
+  console.log("response")
+  console.log(response)
 
   return (
     <div>
@@ -164,10 +148,10 @@ function TakeLoan({ isOpen, setClose }) {
           }}
         >
           <Questionnaire
+          response={response}
           handleBack={handleBack}
           state={state}
             page={page}
-            titlePage={"Qual o tipo de crédito?"}
             handlePageChange={handlePageChange}
             isContinueButtonEnabled={isContinueButtonEnabled}
             dispatch={dispatch}
@@ -179,17 +163,6 @@ function TakeLoan({ isOpen, setClose }) {
             spacing={1}
             justifyContent={"center"}
           >
-            <RenderIf predicate={page === 4}>
-              <Grid item>
-                {/* <Item> */}
-                {/* <ExpandButton variant="text" onClick={handleShowAllInstallments}> */}
-               {/* </ExpandButton> */}
-                  {/* <Button variant="outlined" onClick={handleShowAllInstallments}>
-                    {showAllInstallments ? "Resumo" : "Mais informações"}
-                  </Button> */}
-                {/* </Item> */}
-              </Grid>
-            </RenderIf>
           </Grid>
         </Box>
       </Dialog>

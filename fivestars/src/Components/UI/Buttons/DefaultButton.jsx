@@ -27,10 +27,11 @@ const DefaultButton = ({
   buttonTitle,
   page,
   setClose,
-  styleContrast
+  styleContrast,
+  state
 }) => {
   const handleClick = () => {
-    if (page === 5) {
+    if (page === 5 && state.creditOption === "Antecipação 13") {
       setClose(false);
     } else {
       handlePageChange();

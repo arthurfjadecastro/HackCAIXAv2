@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
+import { LoanDetails } from '../../../UI/Frames';
 
 
 
 
-function FourthPageByAntecipacao({ dispatch,state }) {
-
-
-  
-
+function FourthPageByAntecipacao({ response }) {
   return (
     <>
-     <h1>OPA</h1>
+     <LoanDetails response={response}/>
     </>
   );
 }

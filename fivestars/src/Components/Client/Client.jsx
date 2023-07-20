@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import { Footer, Navbar } from "../Resources";
 import { Grid } from "@mui/material";
 import ClientFlow  from "./ClientFlow/ClientFlow";
-import useCreateAntecipacao from "../../Network/useCreateAntecipacao";
 
 
 function Client() {
