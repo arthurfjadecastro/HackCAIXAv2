@@ -8,6 +8,7 @@ const MonetaryMaskDecorator = (props) => (
     format={createMonetaryFormatter(props.min, props.max)}
   >
     {props.children}
+    
   </MaskDecorator>
 );
 

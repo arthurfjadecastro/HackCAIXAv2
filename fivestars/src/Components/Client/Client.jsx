@@ -31,7 +31,6 @@ function Client() {
 
         }}
       >
-        A2
       </Grid>
     </Grid>
         <Footer/>

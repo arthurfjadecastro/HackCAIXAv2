@@ -43,7 +43,7 @@ const settings = ['Logout'];
             <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar style={{marginRight: 8}} alt="Matias" src="/static/images/avatar/2.jpg" />
+                <Avatar style={{marginRight: 8, backgroundColor: "white"}} alt="Matias" src="images/matias.png" />
                 <Typography color="white" variant="body1">
                 Matias Adrian
               </Typography>
